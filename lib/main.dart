@@ -1,4 +1,5 @@
 import 'package:ayurvedic_centre/domain/provider/auth_provider.dart';
+import 'package:ayurvedic_centre/presentation/patient_list.dart';
 import 'package:ayurvedic_centre/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

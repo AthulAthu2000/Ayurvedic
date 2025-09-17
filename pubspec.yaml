@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   http: ^1.5.0
   provider: ^6.1.5+1
+  dio: ^5.4.0
 
 dev_dependencies:
   flutter_test:
@@ -81,15 +82,15 @@ flutter:
   fonts:
     - family: Regular
       fonts:
-        - asset: fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
     - family: Medium
       fonts:
-        - asset: fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
     - family: SemiBold
       fonts:
-        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

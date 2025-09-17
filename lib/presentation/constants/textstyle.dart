@@ -32,5 +32,11 @@ class AppTextStyles {
     color: AppColors.primary,
     fontFamily: 'Medium',
   );
+  static const TextStyle sortstyle = TextStyle(
+    fontSize: 5,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+    fontFamily: 'Medium',
+  );
   // Add more text styles as needed
 }

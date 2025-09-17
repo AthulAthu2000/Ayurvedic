@@ -1,6 +1,8 @@
 import 'package:ayurvedic_centre/domain/provider/auth_provider.dart';
 import 'package:ayurvedic_centre/presentation/constants/colors.dart';
 import 'package:ayurvedic_centre/presentation/constants/textstyle.dart';
+import 'package:ayurvedic_centre/presentation/home_page.dart';
+import 'package:ayurvedic_centre/presentation/patient_list.dart';
 import 'package:ayurvedic_centre/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,54 +57,88 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     labelText: "Password",
                     hintText: "Enter your Password",
-                    obscureText: true,
+                    obscureText: false,
                   ),
 
                   const SizedBox(height: 60),
-                  Consumer<AuthProvider>(
-                    builder: (context, auth, child) {
-                      if (auth.isLoading) {
-                        return const CircularProgressIndicator();
-                      }
-                      return ElevatedButton(
-                        onPressed: () {
-                          auth
-                              .login(
-                                _usernameController.text,
-                                _passwordController.text,
-                              )
-                              .then((_) {
-                                if (auth.token != null) {
-                                  // Navigate to the next screen on success
-                                  Navigator.of(
-                                    context,
-                                  ).pushReplacementNamed('/home');
-                                } else {
-                                  // Show a snackbar or alert for login failure
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                        'Login failed. Please try again.',
-                                      ),
-                                    ),
-                                  );
-                                }
-                              });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 60),
-                          backgroundColor: AppColors.iconcolor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Login',
-                          style: AppTextStyles.mainButtonstyle,
-                        ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PatientList()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 60),
+                      backgroundColor: AppColors.iconcolor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text(
+                      'Login',
+                      style: AppTextStyles.mainButtonstyle,
+                    ),
                   ),
+                  // Consumer<AuthProvider>(
+                  //   builder: (context, auth, child) {
+                  //     if (auth.isLoading) {
+                  //       return const CircularProgressIndicator();
+                  //     }
+                  //     return ElevatedButton(
+                  //       onPressed: () async {
+                  // try {
+                  //   await auth.login(
+                  //     _usernameController.text,
+                  //     _passwordController.text,
+                  //   );
+
+                  //   if (auth.token != null && mounted) {
+                  //     // Navigate to the next screen on success, and remove login page from stack
+                  //     Navigator.of(context).pushReplacement(
+                  //       MaterialPageRoute(
+                  //         builder: (context) => const HomePage(),
+                  //       ),
+                  //     );
+                  //   } else if (mounted) {
+                  //     // Show a snackbar for login failure, using the error from the provider if available
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //       SnackBar(
+                  //         content: Text(
+                  //           auth.errorMessage ??
+                  //               'Login failed. Please check your credentials.',
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }
+                  // } catch (e) {
+                  //   if (mounted) {
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //       SnackBar(
+                  //         content: Text('An error occurred: $e'),
+                  //       ),
+                  //     );
+                  //   }
+                  // }
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(builder: (context) => HomePage()),
+                  //         );
+                  //       },
+                  //       style: ElevatedButton.styleFrom(
+                  //         minimumSize: Size(double.infinity, 60),
+                  //         backgroundColor: AppColors.iconcolor,
+                  //         shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(10),
+                  //         ),
+                  //       ),
+                  //       child: const Text(
+                  //         'Login',
+                  //         style: AppTextStyles.mainButtonstyle,
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                   Spacer(),
                   Text(
                     "By creating or logging into an account you are agreeing with our Terms and Conditions and Privacy Policy.",
